@@ -6,9 +6,11 @@ using MysticChronicles.PCL.Enums;
 
 namespace MysticChronicles.Android.GameStates {
     public class MainGameState : BaseGameState {
+        private Texture2D _background;
+
         public override GAME_STATES GetGameState() => GAME_STATES.MAIN_GAME;
 
-        private Texture2D _background;
+        public override GAME_STATES EventOnBack() => GAME_STATES.MAIN_MENU;
 
         public override void LoadContent(ContentManager contentManager) {
             _background = contentManager.Load<Texture2D>("Backgrounds/MainGame");
@@ -20,6 +22,6 @@ namespace MysticChronicles.Android.GameStates {
             spriteBatch.Draw(_background, destinationRectangle: graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
 
             spriteBatch.End();
-        }
+        }        
     }
 }

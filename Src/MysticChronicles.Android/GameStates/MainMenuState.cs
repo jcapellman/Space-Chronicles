@@ -7,13 +7,15 @@ using MysticChronicles.PCL.Enums;
 
 namespace MysticChronicles.Android.GameStates {
     public class MainMenuState : BaseGameState {
-        public override GAME_STATES GetGameState() => GAME_STATES.MAIN_MENU;
-
         private SpriteFont _font;
         private Texture2D _background;
         private Texture2D _uiButton;
         private Song _music;
+        
+        public override GAME_STATES GetGameState() => GAME_STATES.MAIN_MENU;
 
+        public override GAME_STATES EventOnBack() => GAME_STATES.EXIT;
+        
         public override void LoadContent(ContentManager contentManager) {
             _font = contentManager.Load<SpriteFont>("Fonts/GameFont");
             _background = contentManager.Load<Texture2D>("Backgrounds/MainMenu");
@@ -28,7 +30,8 @@ namespace MysticChronicles.Android.GameStates {
             spriteBatch.Begin();
 
             spriteBatch.Draw(_background, destinationRectangle: graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
-            string text = "Play";
+
+            var text = "TAP ANYWHERE TO PLAY";
             
             Vector2 textMiddlePoint = _font.MeasureString(text) / 2;
             
@@ -37,6 +40,6 @@ namespace MysticChronicles.Android.GameStates {
                 SpriteEffects.None, 0.5f);
             
             spriteBatch.End();
-        }
+        }        
     }
 }

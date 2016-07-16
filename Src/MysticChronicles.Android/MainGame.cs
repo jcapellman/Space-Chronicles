@@ -1,8 +1,11 @@
 using System;
+using System.Linq;
 using System.Reflection;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using MysticChronicles.Android.GameStates;
 using MysticChronicles.PCL.Enums;
 
@@ -37,11 +40,13 @@ namespace MysticChronicles.Android {
 
                 var bGameState = (BaseGameState)Activator.CreateInstance(type);
 
-                if (bGameState.GetGameState() == gameState)  {
-                    _currentGameState = bGameState;
-
-                    _currentGameState.LoadContent(this.Content);
+                if (bGameState.GetGameState() != gameState) {
+                    continue;
                 }
+
+                _currentGameState = bGameState;
+
+                _currentGameState.LoadContent(this.Content);
             }
         }
         
@@ -56,8 +61,21 @@ namespace MysticChronicles.Android {
         }
         
         protected override void Update(GameTime gameTime) {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                Exit();
+            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
+                var eventState = _currentGameState.EventOnBack();
+
+                if (eventState == GAME_STATES.EXIT) {
+                    Exit();
+                } else {
+                    changeGameState(eventState);
+                }
+            }
+
+            var state = TouchPanel.GetState();
+
+            if (state.Any()) {
+                changeGameState(GAME_STATES.MAIN_GAME);
+            }
 
             base.Update(gameTime);
         }
