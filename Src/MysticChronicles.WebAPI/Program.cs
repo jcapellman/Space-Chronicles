@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
+﻿using System.IO;
 
-namespace MysticChronicles.WebAPI
-{
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
+using Microsoft.AspNetCore.Hosting;
+
+namespace MysticChronicles.WebAPI {
+    public class Program {
+        public static void Main(string[] args) {
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
