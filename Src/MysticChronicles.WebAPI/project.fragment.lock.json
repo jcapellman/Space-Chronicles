@@ -1,0 +1,22 @@
+{
+  "version": 2,
+  "exports": {
+    "MysticChronicles.PCL/1.0.0": {
+      "type": "project",
+      "framework": ".NETFramework,Version=v4.5",
+      "compile": {
+        "bin/Debug/MysticChronicles.PCL.dll": {}
+      },
+      "runtime": {
+        "bin/Debug/MysticChronicles.PCL.dll": {}
+      },
+      "contentFiles": {
+        "bin/Debug/MysticChronicles.PCL.pdb": {
+          "buildAction": "None",
+          "codeLanguage": "any",
+          "copyToOutput": true
+        }
+      }
+    }
+  }
+}

@@ -5,6 +5,14 @@ VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.Android", "MysticChronicles.Android\MysticChronicles.Android.csproj", "{9D850026-C6B2-40A3-A48D-45593B70AC60}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "MysticChronicles.WebAPI", "MysticChronicles.WebAPI\MysticChronicles.WebAPI.xproj", "{856ABC99-1EBD-42C4-8F0D-662381F0EBDE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.PCL", "MysticChronicles.PCL\MysticChronicles.PCL.csproj", "{40C014C2-0185-4D32-B6D8-3C28D7CAA38E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.WebAPI.DataLayer", "MysticChronicles.WebAPI.DataLayer\MysticChronicles.WebAPI.DataLayer.csproj", "{EB0B578E-EEAE-449E-AA58-9FD62B87731B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.WebAPI.BusinessLayer", "MysticChronicles.WebAPI.BusinessLayer\MysticChronicles.WebAPI.BusinessLayer.csproj", "{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +25,22 @@ Global
 		{9D850026-C6B2-40A3-A48D-45593B70AC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D850026-C6B2-40A3-A48D-45593B70AC60}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9D850026-C6B2-40A3-A48D-45593B70AC60}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{856ABC99-1EBD-42C4-8F0D-662381F0EBDE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{856ABC99-1EBD-42C4-8F0D-662381F0EBDE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{856ABC99-1EBD-42C4-8F0D-662381F0EBDE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{856ABC99-1EBD-42C4-8F0D-662381F0EBDE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40C014C2-0185-4D32-B6D8-3C28D7CAA38E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40C014C2-0185-4D32-B6D8-3C28D7CAA38E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40C014C2-0185-4D32-B6D8-3C28D7CAA38E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40C014C2-0185-4D32-B6D8-3C28D7CAA38E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB0B578E-EEAE-449E-AA58-9FD62B87731B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB0B578E-EEAE-449E-AA58-9FD62B87731B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB0B578E-EEAE-449E-AA58-9FD62B87731B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB0B578E-EEAE-449E-AA58-9FD62B87731B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

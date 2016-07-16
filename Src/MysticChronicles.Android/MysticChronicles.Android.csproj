@@ -58,13 +58,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameStates\BaseGameState.cs" />
+    <Compile Include="GameStates\MainGameState.cs" />
+    <Compile Include="GameStates\MainMenuState.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />
