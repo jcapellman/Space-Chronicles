@@ -1,5 +1,4 @@
 using System;
-using Android.OS;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
@@ -12,9 +11,19 @@ namespace MysticChronicles.Android.GameStates {
     public abstract class BaseGameState {        
         public abstract GAME_STATES GetGameState();
 
+        protected readonly SpriteBatch _spriteBatch;
+        private readonly GameWindow _window;
+        private readonly GraphicsDeviceManager _graphics;
+
+        protected BaseGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) {
+            _spriteBatch = spriteBatch;
+            _window = window;
+            _graphics = graphics;
+        }
+
         public abstract void LoadContent(ContentManager contentManager);
 
-        public abstract void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics);
+        public abstract void Render();
 
         public abstract GAME_STATES EventOnBack();
 
@@ -70,6 +79,22 @@ namespace MysticChronicles.Android.GameStates {
 
         public Texture2D LoadTexture2D(string textureName, ContentManager cManager) {
             return cManager.Load<Texture2D>(textureName);
+        }
+
+        public void DrawBackground() {
+            _spriteBatch.Draw(_background, destinationRectangle: _graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
+        }
+
+        public void DrawText(string text, Vector2? position, Color color, float size, Vector2? origin) {
+            if (origin == null) {
+                origin = _gameFont.MeasureString(text) / 2;
+            }
+
+            if (position == null) {
+               position = new Vector2(_window.ClientBounds.Width / 2, _window.ClientBounds.Height / 2);
+            }
+
+            _spriteBatch.DrawString(_gameFont, text, position.Value, Color.White, 0, origin.Value, size, SpriteEffects.None, 0.5f);
         }
     }
 }

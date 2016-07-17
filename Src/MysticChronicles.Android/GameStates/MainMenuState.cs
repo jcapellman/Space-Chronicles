@@ -15,12 +15,15 @@ namespace MysticChronicles.Android.GameStates {
 
         public override bool IsLocked() => _isLocked;
 
+        public MainMenuState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) : base(spriteBatch, window, graphics) { }
+
         public override async void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);
             LoadBackground(contentManager);
 
             PlayMusic(contentManager);
 
+            // todo swap this out for google oauth
             var playProfileHandler = new PlayerProfileHandler(PCL.Common.Constants.PLAYER_TOKEN);
 
             var profile = await playProfileHandler.GetProfile();
@@ -46,22 +49,18 @@ namespace MysticChronicles.Android.GameStates {
             }
         }
 
-        public override void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics) {
-            spriteBatch.Begin();
+        public override void Render() {
+            _spriteBatch.Begin();
 
-            spriteBatch.Draw(_background, destinationRectangle: graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
+            DrawBackground();
 
             if (IsLocked()) {
                 RenderLoadingIndicator();
             }
 
-            var textMiddlePoint = _gameFont.MeasureString(loadingText) / 2;
+            DrawText(loadingText, null, Color.White, 5.0f, null);
 
-            var position = new Vector2(window.ClientBounds.Width / 2, window.ClientBounds.Height / 2);
-            spriteBatch.DrawString(_gameFont, loadingText, position, Color.White, 0, textMiddlePoint, 5.0f,
-                SpriteEffects.None, 0.5f);
-
-            spriteBatch.End();
+            _spriteBatch.End();
         }
     }
 }

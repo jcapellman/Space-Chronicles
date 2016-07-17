@@ -10,6 +10,8 @@ namespace MysticChronicles.Android.GameStates {
 
         public override GAME_STATES EventOnBack() => GAME_STATES.MAIN_MENU;
 
+        public MainGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) : base(spriteBatch, window, graphics) { }
+
         public override bool IsLocked() {
             return false;
         }
@@ -18,12 +20,12 @@ namespace MysticChronicles.Android.GameStates {
             LoadBackground(contentManager);
         }
 
-        public override void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics) {
-            spriteBatch.Begin();
+        public override void Render() {
+            _spriteBatch.Begin();
 
-            spriteBatch.Draw(_background, destinationRectangle: graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
+            DrawBackground();
 
-            spriteBatch.End();
+            _spriteBatch.End();
         }        
     }
 }

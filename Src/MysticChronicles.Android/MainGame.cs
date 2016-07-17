@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using System.Reflection;
 
 using Microsoft.Xna.Framework;
@@ -27,10 +26,6 @@ namespace MysticChronicles.Android {
             graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft | DisplayOrientation.LandscapeRight;
         }
 
-        protected override void Initialize() {            
-            base.Initialize();
-        }
-
         private void changeGameState(GAME_STATES gameState) {
             var types = Assembly.GetExecutingAssembly().GetTypes();
 
@@ -39,7 +34,7 @@ namespace MysticChronicles.Android {
                     continue;
                 }
 
-                var bGameState = (BaseGameState)Activator.CreateInstance(type);
+                var bGameState = (BaseGameState)Activator.CreateInstance(type, spriteBatch, Window, graphics);
 
                 if (bGameState.GetGameState() != gameState) {
                     continue;
@@ -61,10 +56,6 @@ namespace MysticChronicles.Android {
             changeGameState(GAME_STATES.MAIN_MENU);
         }
         
-        protected override void UnloadContent() {
-            
-        }
-        
         protected override void Update(GameTime gameTime) {
             if (_currentGameState.IsLocked()) {
                 return;
@@ -82,17 +73,13 @@ namespace MysticChronicles.Android {
 
             var state = TouchPanel.GetState();
 
-            if (state.Any()) {
-                changeGameState(GAME_STATES.MAIN_GAME);
-            }
-
             base.Update(gameTime);
         }
         
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
 
-            _currentGameState.Render(spriteBatch, this.Content, Window, graphics);
+            _currentGameState.Render();
 
             base.Draw(gameTime);
         }
