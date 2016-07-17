@@ -6,6 +6,8 @@ namespace MysticChronicles.WebAPI.DataLayer.Entities {
     public class EntityFactory : DbContext {
         public virtual DbSet<Users> Users { get; set; }
 
-        public EntityFactory() : base("name=MysticChronicles") { }
+        public virtual DbSet<PlayerProfiles> PlayerProfiles { get; set; }
+
+        public EntityFactory() : base("Server=jcmns.database.windows.net;Database=mysticchronicles;user id=jcmns;password=mbs43v3R!") { }
     }
 }

@@ -37,7 +37,6 @@ namespace MysticChronicles.Android.GameStates {
             public GAME_STATES GameState { get; }
         }
 
-
         public delegate void ChangeStateHandler(object sender, GameStateArgs e);
 
         public event ChangeStateHandler OnChangeState;

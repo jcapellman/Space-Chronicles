@@ -17,6 +17,7 @@ namespace MysticChronicles.Android.GameStates {
         }
 
         public override void LoadContent(ContentManager contentManager) {
+            LoadFont("GameFont", contentManager);
             LoadBackground(contentManager);
         }
 
@@ -24,6 +25,7 @@ namespace MysticChronicles.Android.GameStates {
             _spriteBatch.Begin();
 
             DrawBackground();
+            DrawText($"Level: {GlobalGame.PlayerProfile.Level} | Exp: {GlobalGame.PlayerProfile.Experience} | Credits: {GlobalGame.PlayerProfile.Credits} | Events: {GlobalGame.PlayerProfile.EventTurns}", null, Color.White, 5.0f, null);
 
             _spriteBatch.End();
         }        
