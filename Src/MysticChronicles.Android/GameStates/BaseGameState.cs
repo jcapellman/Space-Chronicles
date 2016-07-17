@@ -17,7 +17,13 @@ namespace MysticChronicles.Android.GameStates {
 
         public abstract bool IsLocked();
 
+        private string ContentName => GetGameState().ToString().Replace("_", "");
+
         private Song _bgMusic;
+
+        public void PlayMusic(ContentManager cManager) {
+            PlayMusic(ContentName, cManager);
+        }
 
         public void PlayMusic(string song, ContentManager cManager) {
             _bgMusic = cManager.Load<Song>($"Music/{song}");
@@ -33,6 +39,10 @@ namespace MysticChronicles.Android.GameStates {
         }
         
         protected Texture2D _background;
+
+        public void LoadBackground(ContentManager cManager) {
+            LoadBackground(ContentName, cManager);
+        }
 
         public void LoadBackground(string name, ContentManager cManager) {
             _background = LoadTexture2D($"Backgrounds/{name}", cManager);

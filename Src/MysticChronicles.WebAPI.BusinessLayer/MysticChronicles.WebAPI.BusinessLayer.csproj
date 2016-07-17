@@ -62,7 +62,7 @@
   <ItemGroup>
     <Compile Include="Managers\AuthenticationManager.cs" />
     <Compile Include="Managers\BaseManager.cs" />
-    <Compile Include="Managers\PlayerProfileManagercs.cs" />
+    <Compile Include="Managers\PlayerProfileManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

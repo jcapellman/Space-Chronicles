@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 using MysticChronicles.PCL.Enums;
+using MysticChronicles.PCL.Handlers;
 
 namespace MysticChronicles.Android.GameStates {
     public class MainMenuState : BaseGameState {
@@ -14,24 +15,30 @@ namespace MysticChronicles.Android.GameStates {
 
         public override bool IsLocked() => _isLocked;
 
-        public override void LoadContent(ContentManager contentManager) {
+        public override async void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);
-            LoadBackground("MainMenu", contentManager);
+            LoadBackground(contentManager);
 
-            PlayMusic("MainMenu", contentManager);
+            PlayMusic(contentManager);
+
+            var playProfileHandler = new PlayerProfileHandler(PCL.Common.Constants.PLAYER_TOKEN);
+
+            var profile = await playProfileHandler.GetProfile();
+
+            
         }
 
         private int increment = 0;
         private string loadingText = "LOADING";
 
         private void RenderLoadingIndicator() {
-            if (increment == 600) {
+            if (increment == 100) {
                 increment = 0;
                 loadingText = "LOADING";
             } else {
                 increment += 1;
 
-                for (var x = 0; x < increment / 100; x++) {
+                if (increment % 10 == 0) {                
                     loadingText += ".";
                 }
             }
