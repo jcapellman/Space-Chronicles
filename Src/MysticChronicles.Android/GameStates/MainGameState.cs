@@ -15,7 +15,7 @@ namespace MysticChronicles.Android.GameStates {
         }
 
         public override void LoadContent(ContentManager contentManager) {
-            LoadBackground("MainGame", contentManager);
+            LoadBackground(contentManager);
         }
 
         public override void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics) {

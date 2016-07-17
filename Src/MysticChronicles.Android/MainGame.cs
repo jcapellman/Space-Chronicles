@@ -46,11 +46,15 @@ namespace MysticChronicles.Android {
                 }
 
                 _currentGameState = bGameState;
-
+                _currentGameState.OnChangeState += _currentGameState_OnChangeState;
                 _currentGameState.LoadContent(this.Content);
             }
         }
-        
+
+        private void _currentGameState_OnChangeState(object sender, BaseGameState.GameStateArgs e) {
+            changeGameState(e.GameState);
+        }
+
         protected override void LoadContent() {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 

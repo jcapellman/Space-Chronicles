@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 
 using MysticChronicles.PCL.Transports.Global;
+using MysticChronicles.PCL.Transports.PlayerProfile;
 
 namespace MysticChronicles.PCL.Handlers {
     public class PlayerProfileHandler : BaseHandler {
@@ -8,6 +9,6 @@ namespace MysticChronicles.PCL.Handlers {
 
         protected override string BaseControllerName() => "PlayerProfile";
 
-        public async Task<ReturnSet<bool>> GetProfile() => await GetAsync<ReturnSet<bool>>();
+        public async Task<ReturnSet<PlayerProfileResponseItem>> GetProfile() => await GetAsync<ReturnSet<PlayerProfileResponseItem>>();
     }
 }

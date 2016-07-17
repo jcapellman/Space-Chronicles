@@ -2,7 +2,7 @@
 
 namespace MysticChronicles.WebAPI.DataLayer.Entities.Objects {
     public class Users {
-        public int ID { get; set; }
+        public Guid GUID { get; set; }
 
         public DateTimeOffset Modified { get; set; }
 

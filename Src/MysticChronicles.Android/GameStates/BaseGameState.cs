@@ -1,3 +1,6 @@
+using System;
+using Android.OS;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -16,6 +19,23 @@ namespace MysticChronicles.Android.GameStates {
         public abstract GAME_STATES EventOnBack();
 
         public abstract bool IsLocked();
+
+        public class GameStateArgs : EventArgs {
+            public GameStateArgs(GAME_STATES gameState) {
+                GameState = gameState;
+            }
+
+            public GAME_STATES GameState { get; }
+        }
+
+
+        public delegate void ChangeStateHandler(object sender, GameStateArgs e);
+
+        public event ChangeStateHandler OnChangeState;
+
+        protected void ChangeState(GAME_STATES gameState) {
+            OnChangeState(this, new GameStateArgs(gameState));
+        }
 
         private string ContentName => GetGameState().ToString().Replace("_", "");
 

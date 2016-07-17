@@ -25,7 +25,9 @@ namespace MysticChronicles.Android.GameStates {
 
             var profile = await playProfileHandler.GetProfile();
 
-            
+            if (!profile.HasError) {
+                ChangeState(GAME_STATES.MAIN_GAME);
+            }
         }
 
         private int increment = 0;
