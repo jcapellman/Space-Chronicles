@@ -6,8 +6,6 @@ using MysticChronicles.PCL.Enums;
 
 namespace MysticChronicles.Android.GameStates {
     public class MainGameState : BaseGameState {
-        private Texture2D _background;
-
         public override GAME_STATES GetGameState() => GAME_STATES.MAIN_GAME;
 
         public override GAME_STATES EventOnBack() => GAME_STATES.MAIN_MENU;
@@ -17,7 +15,7 @@ namespace MysticChronicles.Android.GameStates {
         }
 
         public override void LoadContent(ContentManager contentManager) {
-            _background = contentManager.Load<Texture2D>("Backgrounds/MainGame");
+            LoadBackground("MainGame", contentManager);
         }
 
         public override void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics) {
