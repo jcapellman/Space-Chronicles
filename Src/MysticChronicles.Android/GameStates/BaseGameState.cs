@@ -84,6 +84,47 @@ namespace MysticChronicles.Android.GameStates {
             _spriteBatch.Draw(_background, destinationRectangle: _graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
         }
 
+        public void DrawText(string text, float size, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, Color? color = null) {
+            if (color == null) {
+                color = Color.White;
+            }
+
+            var position = new Vector2();
+            var origin = new Vector2();
+
+            switch (hAlign) {
+                case TEXT_HORIZONTAL_ALIGNMENT.CENTER:
+                    position.X = _window.ClientBounds.Width/2;
+                    origin.X = _window.ClientBounds.Width /2;
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.LEFT:
+                    position.X =50;
+                    origin.X = 10;
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.RIGHT:
+                    position.X = _window.ClientBounds.Width - _gameFont.MeasureString(text).X - 10;
+                    origin.X = _window.ClientBounds.Width;
+                    break;
+            }
+
+            switch (vAlign) {
+                case TEXT_VERTICAL_ALIGNMENT.BOTTOM:
+                    origin.Y = _window.ClientBounds.Height - _gameFont.MeasureString(text).Y - 10;
+                    position.Y = _window.ClientBounds.Height - _gameFont.MeasureString(text).Y - 10;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.CENTER:
+                    origin.Y = _gameFont.MeasureString(text).Y / 2;
+                    position.Y = _window.ClientBounds.Height/2;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.TOP:
+                    origin.Y = 10;
+                    position.Y = _gameFont.MeasureString(text).Y + 35;
+                    break;
+            }
+            
+            DrawText(text, position, color.Value, size, origin);
+        }
+
         public void DrawText(string text, Vector2? position, Color color, float size, Vector2? origin) {
             if (origin == null) {
                 origin = _gameFont.MeasureString(text) / 2;

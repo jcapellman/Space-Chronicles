@@ -25,7 +25,9 @@ namespace MysticChronicles.Android.GameStates {
             _spriteBatch.Begin();
 
             DrawBackground();
-            DrawText($"Level: {GlobalGame.PlayerProfile.Level} | Exp: {GlobalGame.PlayerProfile.Experience} | Credits: {GlobalGame.PlayerProfile.Credits} | Events: {GlobalGame.PlayerProfile.EventTurns}", null, Color.White, 5.0f, null);
+            DrawText(
+                $"Level: {GlobalGame.PlayerProfile.Level} | Exp: {GlobalGame.PlayerProfile.Experience} | Credits: {GlobalGame.PlayerProfile.Credits} | Events: {GlobalGame.PlayerProfile.EventTurns}",
+                5.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP);
 
             _spriteBatch.End();
         }        
