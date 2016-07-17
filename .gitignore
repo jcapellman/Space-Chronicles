@@ -2,3 +2,4 @@ bin/
 obj/
 .vs/
 /Src/packages
+/Src/MysticChronicles.WebAPI/Properties/PublishProfiles
