@@ -85,6 +85,8 @@ namespace MysticChronicles.Android.GameStates {
 
             DrawText("Blunky Class 1", 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.CENTER, Color.White, 125, -25);
 
+            DrawText("SOL SYSTEM", 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, Color.White, 1075, 200);
+
             _spriteBatch.End();
         }        
     }
