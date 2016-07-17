@@ -72,6 +72,10 @@ namespace MysticChronicles.Android.GameStates {
             LoadBackground(ContentName, cManager);
         }
 
+        public void LoadButton(ContentManager cManager) {
+            _buttonTexture = LoadUITexture("Button", cManager);
+        }
+
         public void LoadBackground(string name, ContentManager cManager) {
             _background = LoadTexture2D($"Backgrounds/{name}", cManager);
         }
@@ -88,7 +92,7 @@ namespace MysticChronicles.Android.GameStates {
             _spriteBatch.Draw(_background, destinationRectangle: _graphics.GraphicsDevice.Viewport.Bounds, color: Color.White);
         }
 
-        public void DrawText(string text, float size, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, Color? color = null) {
+        public void DrawText(string text, float size, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, Color? color = null, int xOffset = 0, int yOffset = 0) {
             if (color == null) {
                 color = Color.White;
             }
@@ -125,7 +129,10 @@ namespace MysticChronicles.Android.GameStates {
                     position.Y = _gameFont.MeasureString(text).Y + 35;
                     break;
             }
-            
+
+            position.X += xOffset;
+            position.Y += yOffset;
+
             DrawText(text, position, color.Value, size, origin);
         }
 
@@ -137,7 +144,7 @@ namespace MysticChronicles.Android.GameStates {
                     position.X = _window.ClientBounds.Width / 2;         
                     break;
                 case TEXT_HORIZONTAL_ALIGNMENT.LEFT:
-                    position.X = 50 + xOffset;
+                    position.X = 0 + xOffset;
                     break;
                 case TEXT_HORIZONTAL_ALIGNMENT.RIGHT:
                     position.X = _window.ClientBounds.Width - texture.Width - 10 - xOffset;
@@ -157,6 +164,47 @@ namespace MysticChronicles.Android.GameStates {
             }
             
             _spriteBatch.Draw(texture, position, Color.White);
+        }
+
+        private Texture2D _buttonTexture;
+
+        public void DrawButton(string text, Color color, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, int xOffset = 0, int yOffset = 0) {
+            var position = new Vector2();
+
+            switch (hAlign) {
+                case TEXT_HORIZONTAL_ALIGNMENT.CENTER:
+                    position.X = _window.ClientBounds.Width / 2;
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.LEFT:
+                    position.X = 0 + xOffset;
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.RIGHT:
+                    position.X = _window.ClientBounds.Width - _buttonTexture.Width - 10 - xOffset;
+                    break;
+            }
+
+            switch (vAlign) {
+                case TEXT_VERTICAL_ALIGNMENT.BOTTOM:
+                    position.Y = _window.ClientBounds.Height - _buttonTexture.Height;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.CENTER:
+                    position.Y = _window.ClientBounds.Height / 2;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.TOP:
+                    position.Y = yOffset;
+                    break;
+            }
+
+            var textWidth = _gameFont.MeasureString(text).X;
+            var textHeight = _gameFont.MeasureString(text).Y;
+
+            var textPosition = new Vector2();
+
+            textPosition.X = position.X + ((_buttonTexture.Width - textWidth)/2) + 20;
+            textPosition.Y = position.Y + ((_buttonTexture.Height - textHeight) / 2) + 10;
+
+            _spriteBatch.Draw(_buttonTexture, position, Color.White);
+            DrawText(text, textPosition, color, 3.0f, null);
         }
 
         public void DrawText(string text, Vector2? position, Color color, float size, Vector2? origin) {

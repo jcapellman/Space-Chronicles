@@ -21,15 +21,22 @@ namespace MysticChronicles.Android.GameStates {
         private Texture2D _TurnsIcon;
         private Texture2D _windowTexture;
         private Texture2D _menuButton;
+        private Texture2D _solarSystemTexture;
+        private Texture2D _shipWindowTexture;
+        private Texture2D _playerShipTexture;
 
         public override void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);
+            LoadButton(contentManager);
 
             _metricTexture = LoadUITexture("GameMetricButton", contentManager);
             _CreditsIcon = LoadUITexture("CreditsIcon", contentManager);
             _TurnsIcon = LoadUITexture("TurnsIcon", contentManager);
             _windowTexture = LoadUITexture("GameWindow", contentManager);
             _menuButton = LoadUITexture("MenuButton", contentManager);
+            _solarSystemTexture = LoadUITexture("SolarSystemWindow", contentManager);
+            _shipWindowTexture = LoadUITexture("ShipWindow", contentManager);
+            _playerShipTexture = LoadTexture2D("Ships/Blocky", contentManager);
 
             LoadBackground(contentManager);
         }
@@ -66,7 +73,17 @@ namespace MysticChronicles.Android.GameStates {
             DrawMetric($"{GlobalGame.PlayerProfile.EventTurns}", _TurnsIcon, 3);
 
             DrawUIElement(_menuButton, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.TOP);
-            DrawUIElement(_windowTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.TOP, 0, 125);
+            //DrawUIElement(_windowTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.TOP, 0, 125);
+            DrawUIElement(_solarSystemTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
+            DrawUIElement(_shipWindowTexture, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
+
+            DrawButton("UPGRADE", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 650);
+            DrawButton("BUY NEW", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 775);
+            DrawButton("WARP", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 950);
+
+            DrawUIElement(_playerShipTexture, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 250);
+
+            DrawText("Blunky Class 1", 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.CENTER, Color.White, 125, -25);
 
             _spriteBatch.End();
         }        
