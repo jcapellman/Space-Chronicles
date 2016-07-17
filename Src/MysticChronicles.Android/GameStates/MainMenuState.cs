@@ -1,9 +1,11 @@
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 
 using MysticChronicles.PCL.Enums;
+using MysticChronicles.PCL.Handlers;
 
 namespace MysticChronicles.Android.GameStates {
     public class MainMenuState : BaseGameState {
@@ -23,7 +25,7 @@ namespace MysticChronicles.Android.GameStates {
             _music = contentManager.Load<Song>("Music/MainMenu");
 
             MediaPlayer.Play(_music);
-            MediaPlayer.IsRepeating = true;
+            MediaPlayer.IsRepeating = true;            
         }
 
         public override void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics) {

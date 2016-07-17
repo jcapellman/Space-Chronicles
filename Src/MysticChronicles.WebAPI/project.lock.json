@@ -3,6 +3,20 @@
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
+      "EntityFramework/6.1.3": {
+        "type": "package",
+        "frameworkAssemblies": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "compile": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        },
+        "runtime": {
+          "lib/net45/EntityFramework.SqlServer.dll": {},
+          "lib/net45/EntityFramework.dll": {}
+        }
+      },
       "Libuv/1.9.0": {
         "type": "package",
         "dependencies": {
@@ -1804,10 +1818,47 @@
       },
       "MysticChronicles.PCL/1.0.0": {
         "type": "project"
+      },
+      "MysticChronicles.WebAPI.BusinessLayer/1.0.0": {
+        "type": "project",
+        "dependencies": {
+          "MysticChronicles.PCL": "1.0.0",
+          "MysticChronicles.WebAPI.DataLayer": "1.0.0"
+        }
+      },
+      "MysticChronicles.WebAPI.DataLayer/1.0.0": {
+        "type": "project"
       }
     }
   },
   "libraries": {
+    "EntityFramework/6.1.3": {
+      "sha512": "2xzFHAF3VVdmTR3//MygtQpwfbDjeaq+nQwCcokLzen7MKHOojPaxNPQPa4diHY1QtcR7zlHAJHNRqPB7W2Syw==",
+      "type": "package",
+      "path": "EntityFramework/6.1.3",
+      "files": [
+        "EntityFramework.6.1.3.nupkg.sha512",
+        "EntityFramework.nuspec",
+        "content/App.config.transform",
+        "content/Web.config.transform",
+        "lib/net40/EntityFramework.SqlServer.dll",
+        "lib/net40/EntityFramework.SqlServer.xml",
+        "lib/net40/EntityFramework.dll",
+        "lib/net40/EntityFramework.xml",
+        "lib/net45/EntityFramework.SqlServer.dll",
+        "lib/net45/EntityFramework.SqlServer.xml",
+        "lib/net45/EntityFramework.dll",
+        "lib/net45/EntityFramework.xml",
+        "tools/EntityFramework.PowerShell.Utility.dll",
+        "tools/EntityFramework.PowerShell.dll",
+        "tools/EntityFramework.psd1",
+        "tools/EntityFramework.psm1",
+        "tools/about_EntityFramework.help.txt",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/migrate.exe"
+      ]
+    },
     "Libuv/1.9.0": {
       "sha512": "hPKn+d4miRGEBnRH9ZL7vZrvclQrM8prXwy2aIwwJbHIUa29RoJBMzXJSAPkS9SXOna9W4eRdCau/wUJCXfd/A==",
       "type": "package",
@@ -5480,10 +5531,19 @@
     "MysticChronicles.PCL/1.0.0": {
       "type": "project",
       "msbuildProject": "../MysticChronicles.PCL/MysticChronicles.PCL.csproj"
+    },
+    "MysticChronicles.WebAPI.BusinessLayer/1.0.0": {
+      "type": "project",
+      "msbuildProject": "../MysticChronicles.WebAPI.BusinessLayer/MysticChronicles.WebAPI.BusinessLayer.csproj"
+    },
+    "MysticChronicles.WebAPI.DataLayer/1.0.0": {
+      "type": "project",
+      "msbuildProject": "../MysticChronicles.WebAPI.DataLayer/MysticChronicles.WebAPI.DataLayer.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "": [
+      "EntityFramework >= 6.1.3",
       "Microsoft.AspNetCore.Mvc >= 1.0.0",
       "Microsoft.AspNetCore.Server.IISIntegration >= 1.0.0",
       "Microsoft.AspNetCore.Server.Kestrel >= 1.0.0",
@@ -5496,7 +5556,9 @@
       "Microsoft.Extensions.Options.ConfigurationExtensions >= 1.0.0"
     ],
     ".NETFramework,Version=v4.6.1": [
-      "MysticChronicles.PCL"
+      "MysticChronicles.PCL",
+      "MysticChronicles.WebAPI.BusinessLayer",
+      "MysticChronicles.WebAPI.DataLayer"
     ]
   },
   "tools": {
