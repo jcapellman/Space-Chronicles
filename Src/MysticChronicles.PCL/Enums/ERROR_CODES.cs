@@ -1,5 +1,5 @@
 ﻿namespace MysticChronicles.PCL.Enums {
-    public enum ErrorCodes {
+    public enum ERROR_CODES {
         NONE,
         UNCATEGORIZED,       
         LOGIN_FAILED_BAD_AUTH

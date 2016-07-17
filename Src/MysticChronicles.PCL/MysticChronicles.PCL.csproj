@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
-    <Compile Include="Enums\ErrorCodes.cs" />
+    <Compile Include="Enums\ERROR_CODES.cs" />
     <Compile Include="Enums\GAME_STATES.cs" />
     <Compile Include="Handlers\BaseHandler.cs" />
     <Compile Include="Handlers\PlayerProfileHandler.cs" />

@@ -11,35 +11,35 @@ namespace MysticChronicles.PCL.Transports.Global {
 
         public bool HasValue => ReturnValue != null;
 
-        public bool HasError => Exception != "" || ErrorCode != ErrorCodes.NONE;
+        public bool HasError => Exception != "" || ErrorCode != ERROR_CODES.NONE;
 
         [DataMember]
         public string Exception { get; set; }
 
         [DataMember]
-        public ErrorCodes ErrorCode { get; set; }
+        public ERROR_CODES ErrorCode { get; set; }
 
         public ReturnSet() {
             Exception = string.Empty;
-            ErrorCode = ErrorCodes.NONE;
+            ErrorCode = ERROR_CODES.NONE;
         }
 
-        public ReturnSet(T value) : this(value, string.Empty, ErrorCodes.NONE) { }
+        public ReturnSet(T value) : this(value, string.Empty, ERROR_CODES.NONE) { }
 
-        public ReturnSet(T value, Exception exception, ErrorCodes errorCode) : this(value, exception.ToString(), errorCode) { }
+        public ReturnSet(T value, Exception exception, ERROR_CODES errorCode) : this(value, exception.ToString(), errorCode) { }
 
-        public ReturnSet(Exception exception) : this(exception, ErrorCodes.UNCATEGORIZED) { }
+        public ReturnSet(Exception exception) : this(exception, ERROR_CODES.UNCATEGORIZED) { }
 
-        public ReturnSet(ErrorCodes errorCode) : this(string.Empty, errorCode) { }
+        public ReturnSet(ERROR_CODES errorCode) : this(string.Empty, errorCode) { }
 
-        public ReturnSet(Exception exception, ErrorCodes errorCode) : this(exception.ToString(), errorCode) { }
+        public ReturnSet(Exception exception, ERROR_CODES errorCode) : this(exception.ToString(), errorCode) { }
 
-        public ReturnSet(string exception, ErrorCodes errorCode) {
+        public ReturnSet(string exception, ERROR_CODES errorCode) {
             Exception = exception;
             ErrorCode = errorCode;
         }
 
-        public ReturnSet(T value, string exception, ErrorCodes errorCode) {
+        public ReturnSet(T value, string exception, ERROR_CODES errorCode) {
             ReturnValue = value;
             Exception = exception;
             ErrorCode = errorCode;
