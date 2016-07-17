@@ -13,5 +13,7 @@ namespace MysticChronicles.Android.GameStates {
         public abstract void Render(SpriteBatch spriteBatch, ContentManager contentManager, GameWindow window, GraphicsDeviceManager graphics);
 
         public abstract GAME_STATES EventOnBack();
+
+        public abstract bool IsLocked();
     }
 }

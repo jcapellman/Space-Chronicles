@@ -11,7 +11,7 @@ using MysticChronicles.PCL.Enums;
 
 namespace MysticChronicles.Android {
     public class MainGame : Game {
-        GraphicsDeviceManager graphics;
+        readonly GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
        
         private BaseGameState _currentGameState;
@@ -61,6 +61,10 @@ namespace MysticChronicles.Android {
         }
         
         protected override void Update(GameTime gameTime) {
+            if (_currentGameState.IsLocked()) {
+                return;
+            }
+
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
                 var eventState = _currentGameState.EventOnBack();
 

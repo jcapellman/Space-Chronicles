@@ -12,6 +12,10 @@ namespace MysticChronicles.Android.GameStates {
 
         public override GAME_STATES EventOnBack() => GAME_STATES.MAIN_MENU;
 
+        public override bool IsLocked() {
+            return false;
+        }
+
         public override void LoadContent(ContentManager contentManager) {
             _background = contentManager.Load<Texture2D>("Backgrounds/MainGame");
         }
