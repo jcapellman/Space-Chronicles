@@ -76,6 +76,10 @@ namespace MysticChronicles.Android.GameStates {
             _background = LoadTexture2D($"Backgrounds/{name}", cManager);
         }
 
+        public Texture2D LoadUITexture(string name, ContentManager cManager) {
+            return LoadTexture2D($"UI/{name}", cManager);
+        }
+
         public Texture2D LoadTexture2D(string textureName, ContentManager cManager) {
             return cManager.Load<Texture2D>(textureName);
         }
@@ -123,6 +127,36 @@ namespace MysticChronicles.Android.GameStates {
             }
             
             DrawText(text, position, color.Value, size, origin);
+        }
+
+        public void DrawUIElement(Texture2D texture, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, int xOffset = 0, int yOffset = 0) {            
+            var position = new Vector2();
+            
+            switch (hAlign) {
+                case TEXT_HORIZONTAL_ALIGNMENT.CENTER:
+                    position.X = _window.ClientBounds.Width / 2;         
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.LEFT:
+                    position.X = 50 + xOffset;
+                    break;
+                case TEXT_HORIZONTAL_ALIGNMENT.RIGHT:
+                    position.X = _window.ClientBounds.Width - texture.Width - 10 - xOffset;
+                    break;
+            }
+
+            switch (vAlign) {
+                case TEXT_VERTICAL_ALIGNMENT.BOTTOM:
+                    position.Y = _window.ClientBounds.Height - texture.Height;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.CENTER:
+                    position.Y = _window.ClientBounds.Height/2;
+                    break;
+                case TEXT_VERTICAL_ALIGNMENT.TOP:
+                    position.Y = yOffset;
+                    break;
+            }
+            
+            _spriteBatch.Draw(texture, position, Color.White);
         }
 
         public void DrawText(string text, Vector2? position, Color color, float size, Vector2? origin) {
