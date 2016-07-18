@@ -7,8 +7,9 @@ namespace MysticChronicles.Android {
     public static class GlobalGame {
         public static PlayerProfileResponseItem PlayerProfile;
 
-        public static List<SolarSystemMapDefinitionResponseItem> CurrentSolarSystemItems;
+        public static List<SolarSystemMapDefinitionResponseItem> CurrentSolarSystemItems
+            => PlayerProfile.CurrentSolarSystemItems;
 
-        public static string CurrentSolarSystem;
+        public static string CurrentSolarSystem => PlayerProfile.CurrentSolarSystem;
     }
 }
