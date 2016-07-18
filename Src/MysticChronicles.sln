@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.WebAPI.Dat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.WebAPI.BusinessLayer", "MysticChronicles.WebAPI.BusinessLayer\MysticChronicles.WebAPI.BusinessLayer.csproj", "{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MysticChronicles.Editor", "MysticChronicles.Editor\MysticChronicles.Editor.csproj", "{D27B9B77-D62E-44BC-893B-CB4F2E6DDF1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,10 @@ Global
 		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC4A90E7-1129-44FD-9781-B72A0AA4FE8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D27B9B77-D62E-44BC-893B-CB4F2E6DDF1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D27B9B77-D62E-44BC-893B-CB4F2E6DDF1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D27B9B77-D62E-44BC-893B-CB4F2E6DDF1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D27B9B77-D62E-44BC-893B-CB4F2E6DDF1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
