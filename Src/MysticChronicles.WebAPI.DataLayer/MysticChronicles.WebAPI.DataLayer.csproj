@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Entities\EntityFactory.cs" />
     <Compile Include="Entities\Objects\PlayerProfiles.cs" />
+    <Compile Include="Entities\Objects\SolarSystems.cs" />
     <Compile Include="Entities\Objects\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

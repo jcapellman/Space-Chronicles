@@ -1,11 +1,13 @@
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 
 using MysticChronicles.PCL.Enums;
+using MysticChronicles.PCL.Transports.SolarSystem;
 
 namespace MysticChronicles.Android.GameStates {
     public abstract class BaseGameState {        
@@ -217,6 +219,41 @@ namespace MysticChronicles.Android.GameStates {
             }
 
             _spriteBatch.DrawString(_gameFont, text, position.Value, Color.White, 0, origin.Value, size, SpriteEffects.None, 0.5f);
+        }
+
+        private List<Texture2D> _currentSolarSystemTextures;
+
+        internal void LoadSolarSystemMap(ContentManager cManager) {
+            _currentSolarSystemTextures = new List<Texture2D>();
+
+            foreach (var texture in GlobalGame.CurrentSolarSystemItems) {
+                _currentSolarSystemTextures.Add(LoadTexture2D(texture.TextureName, cManager));
+            }
+        }
+
+        internal void DrawSolarSystemMap() {
+            for (var x = 0; x < PCL.Common.Constants.MAP_WIDTH_SIZE; x++) {
+                for (var y = 0; y < PCL.Common.Constants.MAP_HEIGHT_SIZE; y++) {
+                    var item = GlobalGame.CurrentSolarSystemItems.FirstOrDefault(a => a.XCoordinate == x && a.YCoorindate == y);
+
+                    if (item == null) {
+                        continue;
+                    }
+
+                    var texture = _currentSolarSystemTextures.FirstOrDefault(a => a.Name == item.TextureName);
+
+                    if (texture == null) {
+                        continue;
+                    }
+
+                    var position = new Vector2 {
+                        Y = (y * texture.Height) + 400,
+                        X = (x * texture.Width) + 800
+                    };
+
+                    _spriteBatch.Draw(texture, position, Color.White);
+                }
+            }
         }
     }
 }

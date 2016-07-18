@@ -51,6 +51,7 @@
     <Compile Include="Transports\Global\ReturnSet.cs" />
     <Compile Include="Transports\Internal\BaseManagerConstructorItem.cs" />
     <Compile Include="Transports\PlayerProfile\PlayerProfileResponseItem.cs" />
+    <Compile Include="Transports\SolarSystem\SolarSystemMapDefinitionResponseItem.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

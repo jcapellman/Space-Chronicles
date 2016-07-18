@@ -24,7 +24,7 @@ namespace MysticChronicles.Android.GameStates {
         private Texture2D _solarSystemTexture;
         private Texture2D _shipWindowTexture;
         private Texture2D _playerShipTexture;
-
+        
         public override void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);
             LoadButton(contentManager);
@@ -37,10 +37,12 @@ namespace MysticChronicles.Android.GameStates {
             _solarSystemTexture = LoadUITexture("SolarSystemWindow", contentManager);
             _shipWindowTexture = LoadUITexture("ShipWindow", contentManager);
             _playerShipTexture = LoadTexture2D("Ships/Blocky", contentManager);
-
+            
             LoadBackground(contentManager);
-        }
 
+            LoadSolarSystemMap(contentManager);
+        }
+        
         private void DrawMetric(string text, Texture2D icon, int xOrigin) {
             var position = new Vector2 {
                 Y = 0,
@@ -61,7 +63,7 @@ namespace MysticChronicles.Android.GameStates {
             _spriteBatch.Draw(icon, iconPosition, Color.White);
             DrawText(text, textPosition, Color.White, 3.0f, Vector2.Zero);
         }
-
+        
         public override void Render() {
             _spriteBatch.Begin();
 
@@ -73,7 +75,6 @@ namespace MysticChronicles.Android.GameStates {
             DrawMetric($"{GlobalGame.PlayerProfile.EventTurns}", _TurnsIcon, 3);
 
             DrawUIElement(_menuButton, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.TOP);
-            //DrawUIElement(_windowTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.TOP, 0, 125);
             DrawUIElement(_solarSystemTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
             DrawUIElement(_shipWindowTexture, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
 
@@ -85,7 +86,9 @@ namespace MysticChronicles.Android.GameStates {
 
             DrawText("Blunky Class 1", 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.CENTER, Color.White, 125, -25);
 
-            DrawText("SOL SYSTEM", 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, Color.White, 1075, 200);
+            DrawText(GlobalGame.CurrentSolarSystem, 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, Color.White, 1075, 200);
+
+            DrawSolarSystemMap();
 
             _spriteBatch.End();
         }        

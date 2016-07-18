@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace MysticChronicles.WebAPI.DataLayer.Entities.Objects {
-    public class PlayerProfiles {
+    public class SolarSystems {
         [Key]
         public Guid GUID { get; set; }
 
@@ -12,16 +12,8 @@ namespace MysticChronicles.WebAPI.DataLayer.Entities.Objects {
 
         public bool Active { get; set; }
 
-        public int Experience { get; set; }
+        public string Name { get; set; }
 
-        public int Level { get; set; }
-
-        public Guid UserGUID { get; set; }
-
-        public int Credits { get; set; }
-
-        public int EventTurns { get; set; }
-
-        public Guid CurrentSolarSystemGUID { get; set; }
+        public string MapDefinition { get; set; }
     }
 }
