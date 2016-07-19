@@ -34,7 +34,7 @@ namespace MysticChronicles.Android {
                     continue;
                 }
 
-                var bGameState = (BaseGameState)Activator.CreateInstance(type, spriteBatch, Window, graphics);
+                var bGameState = (BaseGameState)Activator.CreateInstance(type, spriteBatch, Window, graphics, Content);
 
                 if (bGameState.GetGameState() != gameState) {
                     continue;

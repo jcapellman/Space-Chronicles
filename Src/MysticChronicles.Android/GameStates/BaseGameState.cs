@@ -20,10 +20,12 @@ namespace MysticChronicles.Android.GameStates {
 
         internal List<BaseUIControl> _controls = new List<BaseUIControl>();
 
-        protected BaseGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) {
+        protected BaseGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics, ContentManager contentManager) {
             _spriteBatch = spriteBatch;
             _window = window;
             _graphics = graphics;
+
+            _actionButton = LoadUITexture("Button", contentManager);
         }
 
         public abstract void LoadContent(ContentManager contentManager);
@@ -259,8 +261,10 @@ namespace MysticChronicles.Android.GameStates {
             }
         }
 
+        private Texture2D _actionButton;
+
         internal void AddActionButton(string text, Color color, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, int xOffset = 0, int yOffset = 0) {
-            var button = new ActionButtonControl(_window, _gameFont, _menuButton, text, color, hAlign, vAlign, xOffset, yOffset);
+            var button = new ActionButtonControl(_window, _gameFont, _actionButton, text, color, hAlign, vAlign, xOffset, yOffset);
 
             _controls.Add(button);
         }

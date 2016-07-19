@@ -15,7 +15,7 @@ namespace MysticChronicles.Android.GameStates {
 
         public override bool IsLocked() => _isLocked;
 
-        public MainMenuState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) : base(spriteBatch, window, graphics) { }
+        public MainMenuState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics, ContentManager contentManager) : base(spriteBatch, window, graphics, contentManager) { }
 
         public override async void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);

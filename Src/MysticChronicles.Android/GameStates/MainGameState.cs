@@ -10,7 +10,7 @@ namespace MysticChronicles.Android.GameStates {
 
         public override GAME_STATES EventOnBack() => GAME_STATES.MAIN_MENU;
 
-        public MainGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) : base(spriteBatch, window, graphics) { }
+        public MainGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics, ContentManager contentManager) : base(spriteBatch, window, graphics, contentManager) { }
 
         public override bool IsLocked() {
             return false;
@@ -21,6 +21,7 @@ namespace MysticChronicles.Android.GameStates {
         private Texture2D _TurnsIcon;
         private Texture2D _windowTexture;
         private Texture2D _menuButton;
+
         private Texture2D _solarSystemTexture;
         private Texture2D _shipWindowTexture;
         
@@ -33,6 +34,7 @@ namespace MysticChronicles.Android.GameStates {
             _TurnsIcon = LoadUITexture("TurnsIcon", contentManager);
             _windowTexture = LoadUITexture("GameWindow", contentManager);
             _menuButton = LoadUITexture("MenuButton", contentManager);
+
             _solarSystemTexture = LoadUITexture("SolarSystemWindow", contentManager);
             _shipWindowTexture = LoadUITexture("ShipWindow", contentManager);
             
