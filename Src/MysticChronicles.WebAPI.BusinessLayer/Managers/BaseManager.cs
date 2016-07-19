@@ -4,12 +4,12 @@ using MysticChronicles.PCL.Transports.Internal;
 
 namespace MysticChronicles.WebAPI.BusinessLayer.Managers {
     public class BaseManager {
-        private readonly BaseManagerConstructorItem _constructorItem;
+        internal readonly BaseManagerConstructorItem ConstructorItem;
 
-        public Guid UserGUID => _constructorItem.UserGUID;
+        public Guid UserGUID => ConstructorItem.UserGUID;
 
         public BaseManager(BaseManagerConstructorItem constructorItem) {
-            _constructorItem = constructorItem;
+            ConstructorItem = constructorItem;
         }
     }
 }

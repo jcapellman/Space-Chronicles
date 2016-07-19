@@ -27,15 +27,22 @@ namespace MysticChronicles.WebAPI.BusinessLayer.Managers {
                     var currentSolarSystem =
                         eFactory.SolarSystems.FirstOrDefault(a => a.GUID == profile.CurrentSolarSystemGUID);
 
+                    var playerShip = new ShipManager(ConstructorItem).GetShip(profile.PlayerShipGUID);
+
+                    if (playerShip == null) {
+                        throw new Exception(playerShip.Exception);
+                    }
+
                     var response = new PlayerProfileResponseItem {
                         Experience = profile.Experience,
                         Level = profile.Level,
                         Credits = profile.Credits,
                         EventTurns = profile.EventTurns,
                         CurrentSolarSystem = currentSolarSystem.Name,
-                        CurrentSolarSystemItems = JsonConvert.DeserializeObject<List<SolarSystemMapDefinitionResponseItem>>(currentSolarSystem.MapDefinition)
+                        CurrentSolarSystemItems = JsonConvert.DeserializeObject<List<SolarSystemMapDefinitionResponseItem>>(currentSolarSystem.MapDefinition),
+                        PlayerShip = playerShip.ReturnValue
                     };
-                    
+
                     return new ReturnSet<PlayerProfileResponseItem>(response);
                 }
             } catch (Exception ex) {

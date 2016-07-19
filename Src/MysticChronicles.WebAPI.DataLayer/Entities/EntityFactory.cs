@@ -10,6 +10,8 @@ namespace MysticChronicles.WebAPI.DataLayer.Entities {
 
         public virtual DbSet<PlayerProfiles> PlayerProfiles { get; set; }
 
+        public virtual  DbSet<Ships> Ships { get; set; }
+
         public EntityFactory() : base("Server=jcmns.database.windows.net;Database=mysticchronicles;user id=jcmns;password=mbs43v3R!") { }
     }
 }

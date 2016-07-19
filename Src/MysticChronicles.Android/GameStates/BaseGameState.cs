@@ -255,5 +255,17 @@ namespace MysticChronicles.Android.GameStates {
                 }
             }
         }
+
+        internal Texture2D _playerShip;
+
+        internal void LoadPlayerShip(ContentManager cManager) {
+            _playerShip = LoadTexture2D($"Ships/{GlobalGame.PlayerShip.TextureName}", cManager);
+        }
+
+        public void DrawPlayerShip() {
+            DrawUIElement(_playerShip, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 250);
+
+            DrawText(GlobalGame.PlayerShip.Name, 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.CENTER, Color.White, 125, -25);
+        }
     }
 }
