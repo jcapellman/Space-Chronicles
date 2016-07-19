@@ -77,6 +77,8 @@
     <Compile Include="MainGame.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ActionButtonControl.cs" />
+    <Compile Include="UI\BaseUIControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Strings.xml" />

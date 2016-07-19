@@ -60,18 +60,14 @@ namespace MysticChronicles.Android {
             if (_currentGameState.IsLocked()) {
                 return;
             }
+            
+            var state = TouchPanel.GetState();
 
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed) {
-                var eventState = _currentGameState.EventOnBack();
-
-                if (eventState == GAME_STATES.EXIT) {
-                    Exit();
-                } else {
-                    changeGameState(eventState);
+            foreach (var item in state) {
+               if (_currentGameState.IsHit(item.Position)) {
+                    return;
                 }
             }
-
-            var state = TouchPanel.GetState();
 
             base.Update(gameTime);
         }

@@ -1,21 +1,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Media;
 
 using MysticChronicles.PCL.Enums;
-using MysticChronicles.PCL.Transports.SolarSystem;
+using MysticChronicles.Android.UI;
 
 namespace MysticChronicles.Android.GameStates {
     public abstract class BaseGameState {        
         public abstract GAME_STATES GetGameState();
 
         protected readonly SpriteBatch _spriteBatch;
-        private readonly GameWindow _window;
+        internal readonly GameWindow _window;
         private readonly GraphicsDeviceManager _graphics;
+
+        internal List<BaseUIControl> _controls = new List<BaseUIControl>();
 
         protected BaseGameState(SpriteBatch spriteBatch, GameWindow window, GraphicsDeviceManager graphics) {
             _spriteBatch = spriteBatch;
@@ -254,6 +257,22 @@ namespace MysticChronicles.Android.GameStates {
                     _spriteBatch.Draw(texture, position, Color.White);
                 }
             }
+        }
+
+        internal void AddActionButton(string text, Color color, TEXT_HORIZONTAL_ALIGNMENT hAlign, TEXT_VERTICAL_ALIGNMENT vAlign, int xOffset = 0, int yOffset = 0) {
+            var button = new ActionButtonControl(_window, _gameFont, _menuButton, text, color, hAlign, vAlign, xOffset, yOffset);
+
+            _controls.Add(button);
+        }
+
+        public bool IsHit(Vector2 position) {
+            foreach (var control in _controls) {
+                if (control.IsHit(position)) {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         internal Texture2D _playerShip;

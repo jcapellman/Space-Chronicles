@@ -27,7 +27,7 @@ namespace MysticChronicles.Android.GameStates {
         public override void LoadContent(ContentManager contentManager) {
             LoadFont("GameFont", contentManager);
             LoadButton(contentManager);
-
+            
             _metricTexture = LoadUITexture("GameMetricButton", contentManager);
             _CreditsIcon = LoadUITexture("CreditsIcon", contentManager);
             _TurnsIcon = LoadUITexture("TurnsIcon", contentManager);
@@ -39,6 +39,10 @@ namespace MysticChronicles.Android.GameStates {
             LoadBackground(contentManager);
             LoadPlayerShip(contentManager);
             LoadSolarSystemMap(contentManager);
+
+            AddActionButton("UPGRADE", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 650);
+            AddActionButton("BUY NEW", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 775);
+            AddActionButton("WARP", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 950);
         }
         
         private void DrawMetric(string text, Texture2D icon, int xOrigin) {
@@ -76,10 +80,10 @@ namespace MysticChronicles.Android.GameStates {
             DrawUIElement(_solarSystemTexture, TEXT_HORIZONTAL_ALIGNMENT.RIGHT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
             DrawUIElement(_shipWindowTexture, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.BOTTOM);
 
-            DrawButton("UPGRADE", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 650);
-            DrawButton("BUY NEW", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 775);
-            DrawButton("WARP", Color.White, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, 100, 950);
-
+            foreach (var control in _controls) {
+                control.Render(_spriteBatch);
+            }
+            
             DrawPlayerShip();
 
             DrawText(GlobalGame.CurrentSolarSystem, 3.0f, TEXT_HORIZONTAL_ALIGNMENT.LEFT, TEXT_VERTICAL_ALIGNMENT.TOP, Color.White, 1075, 200);
